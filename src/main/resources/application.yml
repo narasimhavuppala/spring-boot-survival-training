@@ -1,0 +1,9 @@
+server:
+   port: 8083
+   servlet:
+      context-path: /training-demo
+   compression:
+      enabled: false
+spring:
+   h2:
+     console.enabled: true
