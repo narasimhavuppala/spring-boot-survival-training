@@ -5,6 +5,7 @@ import com.example.springtrainingdemo.repo.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,17 +19,21 @@ public class StudentService {
      * @param student
      * @return
      */
-    public Student saveStudent(Student student) {
-        return studentRepository.save(student);
+    public Student saveOrUpdate(Student student) {
+        return studentRepository.save(student);  //Save is for create and update
     }
 
-    /***
-     * Electives/Optional Courses...Grading system
-     * @param id
-     * @return
-     */
-    public Optional<Student> searchStudent(Integer id) {
-        return studentRepository.findById(id);
+
+    public List<Student> getStudents() {
+        return studentRepository.findAll();
+    }
+
+    public Optional<Student> getStudents(Integer studentId) {
+        return studentRepository.findById(studentId);
+    }
+
+    public void deleteStudent(Integer id) {
+        studentRepository.deleteById(id);
     }
 
 }
