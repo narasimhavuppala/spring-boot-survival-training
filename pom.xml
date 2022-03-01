@@ -48,6 +48,12 @@
             <optional>true</optional>
         </dependency>
 
+        <!-- OAS 3 : Swagger: A Restful API Testing tool: https://swagger.io/specification/ -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.6</version>
+        </dependency>
 
     </dependencies>
 

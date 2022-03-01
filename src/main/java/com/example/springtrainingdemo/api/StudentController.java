@@ -3,7 +3,10 @@ package com.example.springtrainingdemo.api;
 import com.example.springtrainingdemo.exception.CustomerNotFoundException;
 import com.example.springtrainingdemo.model.Student;
 import com.example.springtrainingdemo.service.StudentService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +40,10 @@ public class StudentController {
      * @param studentId
      * @return
      */
+    @Operation(responses = {
+            @ApiResponse(responseCode = "200"),
+            @ApiResponse(responseCode = "404")
+    })
     @GetMapping("/{id}")  //Retrieve
     public ResponseEntity<Student> getStudent(@PathVariable("id") Integer studentId) {
         Optional<Student> optStudetn = studentService.getStudents(studentId);
