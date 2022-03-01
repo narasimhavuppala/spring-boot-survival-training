@@ -5,6 +5,7 @@ import com.example.springtrainingdemo.model.Student;
 import com.example.springtrainingdemo.service.StudentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -17,12 +18,14 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/student")
+@Tag(name = "student", description = "the Student  API")
 public class StudentController {
 
     /* C R U D operations*/
     @Autowired //Searches for the Student Service in Spring IOC : Inversion of Control
     private StudentService studentService;
 
+    @Operation(summary = "Add a new Student", description = "creates a new Student", tags = { "contact" })
     @PostMapping //C ..create
     public ResponseEntity<Student> saveStudent(@RequestBody @Valid Student student) {
 
