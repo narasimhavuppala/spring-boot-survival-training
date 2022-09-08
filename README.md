@@ -1,6 +1,7 @@
 # spring-boot-survival-training
 
 # Softwares Required
+  - [Java 17](https://www.oracle.com/java/technologies/downloads/#java17)
   - [Intellij  IDE (Integrated Development Environment)](https://www.jetbrains.com/idea/download/#section=windows)
   - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
   - [Maven Build tool](https://maven.apache.org/download.cgi)
