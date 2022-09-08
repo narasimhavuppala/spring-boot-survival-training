@@ -28,9 +28,7 @@ public class StudentController {
     @Operation(summary = "Add a new Student", description = "creates a new Student", tags = { "contact" })
     @PostMapping //C ..create
     public ResponseEntity<Student> saveStudent(@RequestBody @Valid Student student) {
-
-        student = studentService.saveOrUpdate(student);
-        return new ResponseEntity<>(student, HttpStatus.CREATED);
+        return new ResponseEntity<>(studentService.saveOrUpdate(student), HttpStatus.CREATED);
     }
 
     @GetMapping  //Retrieve
@@ -45,7 +43,7 @@ public class StudentController {
      */
     @Operation(responses = {
             @ApiResponse(responseCode = "200"),
-            @ApiResponse(responseCode = "404")
+            @ApiResponse(responseCode = "404",description = "Customer is not found the given Customer Id")
     })
     @GetMapping("/{id}")  //Retrieve
     public ResponseEntity<Student> getStudent(@PathVariable("id") Integer studentId) {
