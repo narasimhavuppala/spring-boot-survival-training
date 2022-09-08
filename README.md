@@ -9,3 +9,12 @@
   - [Git Bash](https://git-scm.com/downloads)
   - [Tortoise Git](https://tortoisegit.org/)
   - [Database Client](https://dbeaver.io/)
+# Steps to Build this project
+   ```
+   mvn clean spring-boot:run
+   
+   ```
+# Code coverage command
+   ```
+      mvn clean test
+   ```
