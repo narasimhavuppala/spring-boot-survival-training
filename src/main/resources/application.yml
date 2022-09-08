@@ -11,4 +11,4 @@ management:
    endpoints:
       web:
          exposure:
-            include: metrics, health
+            include: metrics, health,httptrace
