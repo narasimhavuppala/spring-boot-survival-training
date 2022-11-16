@@ -6,4 +6,9 @@ server:
       enabled: false
 spring:
    h2:
-     console.enabled: true
+     console:
+       enabled: true
+   servlet:
+     multipart:
+       max-file-size: 5MB
+       max-request-size: 6MB

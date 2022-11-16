@@ -7,7 +7,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +38,7 @@ public class StudentController {
     }
 
     /***
-     * ResponseEntity is used when status code / respone body dynamic
+     * ResponseEntity is used when status code / response body dynamic
      * @param studentId
      * @return
      */
@@ -55,7 +54,6 @@ public class StudentController {
         }
 
         throw new CustomerNotFoundException("Customer Id =" + studentId);
-        // return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PutMapping
@@ -81,9 +79,9 @@ public class StudentController {
     }
 
     @ExceptionHandler(CustomerNotFoundException.class)
-    public ResponseEntity handleException(RuntimeException rte) {
+    public ResponseEntity<String> handleException(RuntimeException rte) {
         rte.printStackTrace();
-        return new ResponseEntity("Customer not Exist for the Given input " + rte.getLocalizedMessage(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("Customer not Exist for the Given input " + rte.getLocalizedMessage(), HttpStatus.NOT_FOUND);
     }
 
 
