@@ -16,4 +16,6 @@ management:
   endpoints:
     web:
       exposure:
-        include: metrics, health,httptrace
+        include: health, beans,loggers
+spring-doc:
+  show-actuator: true
