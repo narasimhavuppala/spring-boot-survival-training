@@ -24,7 +24,7 @@ public class StudentController {
     @Autowired //Searches for the Student Service in Spring IOC : Inversion of Control
     private StudentService studentService;
 
-    @Operation(summary = "Add a new Student", description = "creates a new Student", tags = { "contact" })
+    @Operation(summary = "Add a new Student", description = "creates a new Student", tags = {"contact"})
     @PostMapping //C ..create
     public ResponseEntity<Student> saveStudent(@RequestBody @Valid Student student) {
         return new ResponseEntity<>(studentService.saveOrUpdate(student), HttpStatus.CREATED);
@@ -42,13 +42,13 @@ public class StudentController {
      */
     @Operation(responses = {
             @ApiResponse(responseCode = "200"),
-            @ApiResponse(responseCode = "404",description = "Customer is not found the given Customer Id")
+            @ApiResponse(responseCode = "404", description = "Customer is not found the given Customer Id")
     })
     @GetMapping("/{id}")  //Retrieve
     public ResponseEntity<Student> getStudent(@PathVariable("id") Integer studentId) {
         Optional<Student> optStudetn = studentService.getStudents(studentId);
         if (optStudetn.isPresent()) {
-            return new ResponseEntity<>(optStudetn.get(), HttpStatus.OK);
+            return ResponseEntity.ok(optStudetn.get());
         }
 
         throw new CustomerNotFoundException("Customer Id =" + studentId);
@@ -59,9 +59,9 @@ public class StudentController {
         Optional<Student> optStudent = studentService.getStudents(student.getId());
         if (optStudent.isPresent()) {
             student = studentService.saveOrUpdate(student);
-            return new ResponseEntity<>(student, HttpStatus.OK);
+            return ResponseEntity.ok(student);
         } else
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")  //Retrieve
