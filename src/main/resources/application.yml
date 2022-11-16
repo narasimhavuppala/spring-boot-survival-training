@@ -12,3 +12,8 @@ spring:
      multipart:
        max-file-size: 5MB
        max-request-size: 6MB
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics, health,httptrace
