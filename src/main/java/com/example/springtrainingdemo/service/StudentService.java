@@ -1,6 +1,7 @@
 package com.example.springtrainingdemo.service;
 
 import com.example.springtrainingdemo.model.Student;
+import com.example.springtrainingdemo.repo.RedisRepository;
 import com.example.springtrainingdemo.repo.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,10 @@ public class StudentService {
     @Autowired //Dependency Injection
     private StudentRepository studentRepository;
 
+    @Autowired(required = false)
+    private RedisRepository redisRepository;
+
+
     /***
      * Sending without Id...and Returning with id
      * ...few fields are auto calculated
@@ -20,7 +25,10 @@ public class StudentService {
      * @return
      */
     public Student saveOrUpdate(Student student) {
-        return studentRepository.save(student);  //Save is for create and update
+        student = studentRepository.save(student);  //Save is for create and update
+        if (redisRepository != null)
+            redisRepository.saveStudent(student);
+        return student;
     }
 
 

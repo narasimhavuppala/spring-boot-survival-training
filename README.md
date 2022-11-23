@@ -18,3 +18,8 @@
    ```
       mvn clean test
    ```
+
+# Run redis 
+```
+docker run redis -p 6379:6379
+```

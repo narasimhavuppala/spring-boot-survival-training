@@ -36,7 +36,8 @@ public class Student {
     @Email
     private String email;
 
-    private OffsetDateTime dob=OffsetDateTime.from(ZonedDateTime.now());
+   // @Transient
+    //private OffsetDateTime dob=OffsetDateTime.from(ZonedDateTime.now());
 
     @Transient //Absent from database
     @JsonIgnore // Absent from Input/Output
