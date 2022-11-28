@@ -1,27 +1,27 @@
 version: '2.1'
 
 services:
-  zoo1:
+  zookeeper:
     image: confluentinc/cp-zookeeper:latest
-    hostname: zoo1
-    container_name: zoo1
+    hostname: zookeeper
+    container_name: zookeeper
     ports:
       - "2181:2181"
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_SERVER_ID: 1
-      ZOOKEEPER_SERVERS: zoo1:2888:3888
+      ZOOKEEPER_SERVERS: zookeeper:2888:3888
 
-  kafka1:
+  kafka:
     image: confluentinc/cp-kafka:latest
-    hostname: kafka1
-    container_name: kafka1
+    hostname: kafka
+    container_name: kafka
     ports:
       - "9092:9092"
       - "29092:29092"
       - "9999:9999"
     environment:
-      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka1:19092,EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9092,DOCKER://host.docker.internal:29092
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:19092,EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9092,DOCKER://host.docker.internal:29092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,DOCKER:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
       KAFKA_ZOOKEEPER_CONNECT: "zoo1:2181"
@@ -35,7 +35,7 @@ services:
       KAFKA_AUTHORIZER_CLASS_NAME: kafka.security.authorizer.AclAuthorizer
       KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
     depends_on:
-      - zoo1
+      - zookeeper
   redis:
     image: redis
     ports:
@@ -64,3 +64,10 @@ services:
     image: prom/alertmanager:latest
     ports:
      - "9093:9093"
+  mongodb:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: mongo
+    ports:
+      - 27017:27017
