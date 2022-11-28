@@ -5,6 +5,17 @@ server:
    compression:
       enabled: false
 spring:
+   datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+   jpa:
+     properties:
+       hibernate:
+         dialect: org.hibernate.dialect.PostgreSQLDialect
+     generate-ddl: true
+     hibernate:
+      ddl-auto: create
    h2:
      console:
        enabled: true

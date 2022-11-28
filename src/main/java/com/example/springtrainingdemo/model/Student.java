@@ -30,7 +30,7 @@ import java.time.ZonedDateTime;
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotBlank(message = "Name must not be blank and it should be proper value")
