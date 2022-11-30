@@ -12,8 +12,9 @@
 # Steps to Build this project
    ```
    start docker desktop
-   mvn clean spring-boot:run -Dspring-boot.run.profiles=redis
    docker compose up
+   mvn clean spring-boot:run -Dspring-boot.run.profiles=redis
+  
    mvn clean spring-boot:run
    
    ```

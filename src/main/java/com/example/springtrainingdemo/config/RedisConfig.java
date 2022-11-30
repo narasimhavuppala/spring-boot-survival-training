@@ -30,11 +30,7 @@ import java.time.format.DateTimeFormatter;
 @Configuration
 @Profile("redis")
 public class RedisConfig {
-    @Bean
-    public JedisConnectionFactory redisConnectFactory() {
-        RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration("localhost", 6379);
-        return new JedisConnectionFactory(configuration);
-    }
+
 
     @Bean
     RedisTemplate<Integer, Student> redisTemplate(RedisConnectionFactory redisConnectionFactory) {

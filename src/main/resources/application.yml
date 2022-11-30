@@ -5,10 +5,8 @@ server:
    compression:
       enabled: false
 spring:
-   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: postgres
+   profiles:
+     active: redis
    jpa:
      properties:
        hibernate:
@@ -30,3 +28,16 @@ management:
         include: health,metrics, beans,loggers,prometheus
 spring-doc:
   show-actuator: true
+---
+spring:
+  profiles: redis
+  redis:
+    host: localhost
+    port: 6379
+---
+spring:
+  profiles: postgress
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
