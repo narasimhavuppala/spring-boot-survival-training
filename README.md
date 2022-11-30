@@ -11,6 +11,9 @@
   - [Database Client](https://dbeaver.io/)
 # Steps to Build this project
    ```
+   mvn clean spring-boot:run -Dspring-boot.run.profiles=redis
+   start docker desktop
+   docker compose up
    mvn clean spring-boot:run
    
    ```

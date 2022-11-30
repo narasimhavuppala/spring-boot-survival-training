@@ -27,6 +27,6 @@ management:
   endpoints:
     web:
       exposure:
-        include: health, beans,loggers
+        include: health,metrics, beans,loggers,prometheus
 spring-doc:
   show-actuator: true
