@@ -11,8 +11,8 @@
   - [Database Client](https://dbeaver.io/)
 # Steps to Build this project
    ```
-   mvn clean spring-boot:run -Dspring-boot.run.profiles=redis
    start docker desktop
+   mvn clean spring-boot:run -Dspring-boot.run.profiles=redis
    docker compose up
    mvn clean spring-boot:run
    
@@ -22,12 +22,6 @@
       mvn clean test
    ```
 
-# Run these Docker images before start of project  
-```
-
-docker compose up -f docker-compose.yml
-docker run -p 6379:6379 redis 
-```
 # Rest Endpoints
 - Add below Dependency
 
