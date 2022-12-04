@@ -6,7 +6,7 @@ server:
       enabled: false
 spring:
    profiles:
-     active: redis
+     active: redis,postgress
    jpa:
      properties:
        hibernate:

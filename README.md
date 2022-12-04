@@ -244,7 +244,8 @@
 # Features Awaiting
 - Exception Handling
   - Controller Specific
-- AOP
+- Unit Testing
+-  Integration Testing
 - Auditing...Added Auditing
 - Oauth2 Integration
     - password flow

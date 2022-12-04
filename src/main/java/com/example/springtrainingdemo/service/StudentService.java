@@ -36,7 +36,7 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    public Optional<Student> getStudents(Integer studentId) {
+    public Optional<Student> getStudentById(Integer studentId) {
         return studentRepository.findById(studentId);
     }
 

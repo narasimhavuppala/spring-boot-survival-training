@@ -27,7 +27,7 @@ import java.time.ZonedDateTime;
 @Entity
 @Getter  //Lombok Annotations
 @Setter  //Lombok Annotations
-public class Student {
+public class Student extends AuditableEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

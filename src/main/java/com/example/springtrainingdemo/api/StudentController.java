@@ -46,7 +46,7 @@ public class StudentController {
     })
     @GetMapping("/{id}")  //Retrieve
     public ResponseEntity<Student> getStudent(@PathVariable("id") Integer studentId) {
-        Optional<Student> optStudetn = studentService.getStudents(studentId);
+        Optional<Student> optStudetn = studentService.getStudentById(studentId);
         if (optStudetn.isPresent()) {
             return ResponseEntity.ok(optStudetn.get());
         }
@@ -56,7 +56,7 @@ public class StudentController {
 
     @PutMapping
     public ResponseEntity<Student> updateStudent(@RequestBody @Valid Student student) {
-        Optional<Student> optStudent = studentService.getStudents(student.getId());
+        Optional<Student> optStudent = studentService.getStudentById(student.getId());
         if (optStudent.isPresent()) {
             student = studentService.saveOrUpdate(student);
             return ResponseEntity.ok(student);
@@ -67,7 +67,7 @@ public class StudentController {
     @DeleteMapping("/{id}")  //Retrieve
     public ResponseEntity<String> deleteStudent(@PathVariable("id") Integer studentId) {
 
-        Optional<Student> optStudent = studentService.getStudents(studentId);
+        Optional<Student> optStudent = studentService.getStudentById(studentId);
         if (optStudent.isPresent()) {
             studentService.deleteStudent(studentId);
             return new ResponseEntity<>(HttpStatus.OK);
@@ -77,7 +77,7 @@ public class StudentController {
     }
 
     @ExceptionHandler(CustomerNotFoundException.class)
-    public ResponseEntity<String> handleException(RuntimeException rte) {
+    public ResponseEntity<String> handleException(CustomerNotFoundException rte) {
         rte.printStackTrace();
         return new ResponseEntity<>("Customer not Exist for the Given input " + rte.getLocalizedMessage(), HttpStatus.NOT_FOUND);
     }
