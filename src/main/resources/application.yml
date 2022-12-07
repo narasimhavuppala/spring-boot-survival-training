@@ -6,7 +6,12 @@ server:
       enabled: false
 spring:
    profiles:
-     active: redis,postgress
+     active: redis,postgres
+   kafka:
+     producer:
+       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+     consumer:
+       value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
    jpa:
      properties:
        hibernate:
@@ -36,8 +41,8 @@ spring:
     port: 6379
 ---
 spring:
-  profiles: postgress
+  profiles: postgres
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5432/sonar
     username: postgres
     password: postgres

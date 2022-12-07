@@ -36,23 +36,34 @@ services:
       KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
     depends_on:
       - zookeeper
+  kafka-ui:
+    image: provectuslabs/kafka-ui
+    container_name: kafka-ui
+    ports:
+      - "8089:8080"
+    restart: always
+    environment:
+      - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper:2181
+      - KAFKA_CLUSTERS_0_NAME=local
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
+    depends_on:
+      - kafka
   redis:
     image: redis:latest
     ports:
      - "6379:6379"
-  postgress:
+  postgres:
     image: 'postgres:latest'
-    container_name: db
+    container_name: postgres-db
     ports:
      - "5432:5432"
-     - "5433:5432"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=sonar
     volumes:
-      - postgresql:/var/lib/postgresql
-      - postgresql_data:/var/lib/postgresql/data
+      - postgres:/var/lib/postgresql
+      - postgres_data:/var/lib/postgresql/data
   prometheus:
     image: prom/prometheus:latest
     container_name: 'prometheus'
@@ -65,7 +76,7 @@ services:
      - '3000:3000'
     depends_on:
       - prometheus
-  alertmanager:
+  alert-manager:
     image: prom/alertmanager:latest
     ports:
      - "9093:9093"
@@ -75,7 +86,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: mongo
       MONGO_INITDB_ROOT_PASSWORD: mongo
     ports:
-      - 27017:27017
+      - "27017:27017"
   sonarqube:
     image: sonarqube:community
     volumes:
@@ -89,15 +100,15 @@ services:
     privileged: true
     user: root
     ports:
-      - 8080:8080
-      - 50000:50000
+      - "8080:8080"
+      - "5000:5000"
     container_name: jenkins
     volumes:
-      - /home/${myname}/jenkins_compose/jenkins_configuration:/var/jenkins_home
+      - /home/${name}/jenkins_compose/jenkins_configuration:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
 volumes:
   sonarqube_data:
   sonarqube_extensions:
   sonarqube_logs:
-  postgresql:
-  postgresql_data:
+  postgres:
+  postgres_data:
