@@ -1,9 +1,12 @@
 pipeline {
-    agent any
-	tools { 
-        maven 'Maven 3.8.6' 
-        jdk 'jdk-11' 
-    }
+    agent {
+	
+	  docker {
+            image 'maven:3.8.6-eclipse-temurin-11' 
+            args '-v /root/.m2:/root/.m2' 
+        }
+	}
+	
     stages {
         stage('Back-end') {
             steps {
