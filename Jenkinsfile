@@ -7,13 +7,9 @@ pipeline {
     stages {
         stage('Back-end') {
             steps {
-                sh 'mvn --version'
+                sh 'mvn clean package'
             }
         }
-        stage('Front-end') {
-            steps {
-                sh 'node --version'
-            }
-        }
+       
     }
 }
