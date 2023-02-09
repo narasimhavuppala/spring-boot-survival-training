@@ -1,5 +1,6 @@
 package com.example.springtrainingdemo.api;
 
+import com.example.springtrainingdemo.aop.util.ValidationGroups;
 import com.example.springtrainingdemo.exception.CustomerNotFoundException;
 import com.example.springtrainingdemo.model.Student;
 import com.example.springtrainingdemo.service.StudentService;
@@ -9,6 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -18,6 +20,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/student")
 @Tag(name = "student", description = "the Student  API")
+@Validated
 public class StudentController {
 
     /* C R U D operations*/
@@ -26,7 +29,7 @@ public class StudentController {
 
     @Operation(summary = "Add a new Student", description = "creates a new Student", tags = {"contact"})
     @PostMapping //C ..create
-    public ResponseEntity<Student> saveStudent(@RequestBody @Valid Student student) {
+    public ResponseEntity<Student> saveStudent(@RequestBody @Validated(ValidationGroups.create.class) Student student) {
         return new ResponseEntity<>(studentService.saveOrUpdate(student), HttpStatus.CREATED);
     }
 
@@ -55,7 +58,7 @@ public class StudentController {
     }
 
     @PutMapping
-    public ResponseEntity<Student> updateStudent(@RequestBody @Valid Student student) {
+    public ResponseEntity<Student> updateStudent(@RequestBody @Validated(ValidationGroups.update.class) Student student) {
         Optional<Student> optStudent = studentService.getStudentById(student.getId());
         if (optStudent.isPresent()) {
             student = studentService.saveOrUpdate(student);

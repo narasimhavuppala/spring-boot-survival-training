@@ -1,18 +1,15 @@
 package com.example.springtrainingdemo.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.example.springtrainingdemo.aop.util.ValidationGroups;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.time.ZonedDateTime;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /***
  * Domain Object ...Business Folks: Finanace Domain/Healthcare Domain
@@ -27,17 +24,18 @@ import java.time.ZonedDateTime;
 @Entity
 @Getter  //Lombok Annotations
 @Setter  //Lombok Annotations
-public class Student extends AuditableEntity{
+public class Student extends AuditableEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull(groups = ValidationGroups.update.class)
     private Integer id;
 
     @NotBlank(message = "Name must not be blank and it should be proper value")
-    @Length(min = 8, max=50, message = " Name should be between 8 and 50 characters")
+    @Length(min = 8, max = 50, message = " Name should be between 8 and 50 characters")
     private String name;
 
-    @Email
+    @Email(groups = {ValidationGroups.create.class, ValidationGroups.update.class})
     private String email;
 
     // @Transient
@@ -46,8 +44,6 @@ public class Student extends AuditableEntity{
     @Transient //Absent from database
     @JsonIgnore // Absent from Input/Output
     private String password;
-
-
 
 
 }
