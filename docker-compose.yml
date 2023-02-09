@@ -95,17 +95,6 @@ services:
       - sonarqube_logs:/opt/sonarqube/logs
     ports:
       - "9000:9000"
-  jenkins:
-    image: jenkins/jenkins:lts
-    privileged: true
-    user: root
-    ports:
-      - "8080:8080"
-      - "5000:5000"
-    container_name: jenkins
-    volumes:
-      - /home/${name}/jenkins_compose/jenkins_configuration:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
 volumes:
   sonarqube_data:
   sonarqube_extensions:

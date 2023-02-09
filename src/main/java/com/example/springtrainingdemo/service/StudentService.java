@@ -1,5 +1,6 @@
 package com.example.springtrainingdemo.service;
 
+import com.example.springtrainingdemo.aop.util.TrackTimeTaken;
 import com.example.springtrainingdemo.model.Student;
 import com.example.springtrainingdemo.repo.RedisRepository;
 import com.example.springtrainingdemo.repo.StudentRepository;
@@ -32,6 +33,7 @@ public class StudentService {
     }
 
 
+    @TrackTimeTaken
     public List<Student> getStudents() {
         return studentRepository.findAll();
     }
