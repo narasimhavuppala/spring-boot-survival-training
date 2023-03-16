@@ -29,4 +29,15 @@ public class StudentServiceTest {
         List<Student>  studentsList= studentService.getStudents();
         Assertions.assertTrue(1==studentsList.size());
     }
+
+    @Test
+    public void handleTestFindAll(){
+        Student student = new Student();
+        student.setId(1);
+        student.setName("sampel");
+
+        Mockito.when(studentRepository.findAll()).thenReturn(List.of(student));
+        List<Student>  studentsList= studentService.getStudents();
+        Assertions.assertTrue(1==studentsList.size());
+    }
 }

@@ -7,9 +7,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 /***
  * Domain Object ...Business Folks: Finanace Domain/Healthcare Domain
@@ -44,6 +42,9 @@ public class Student extends AuditableEntity {
     @Transient //Absent from database
     @JsonIgnore // Absent from Input/Output
     private String password;
+
+
+    private String age;
 
 
 }

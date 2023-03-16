@@ -85,5 +85,16 @@ public class StudentController {
         return new ResponseEntity<>("Customer not Exist for the Given input " + rte.getLocalizedMessage(), HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/{name}/{page}")
+    public List<Student>  findAllWithPagination(@PathVariable("name")  String name,
+                                                @PathVariable("page") Integer page,
+                                                @RequestParam("offset") Integer offset,
+                                                @RequestParam("sort1")  String sort1,
+                                                @RequestParam("sort2")  String sort2){
+
+        return this.studentService.findByName(name,page,offset,sort1,sort2);
+
+    }
+
 
 }
