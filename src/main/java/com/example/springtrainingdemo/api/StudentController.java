@@ -87,10 +87,12 @@ public class StudentController {
 
     @GetMapping("/{name}/{page}")
     public List<Student>  findAllWithPagination(@PathVariable("name")  String name,
-                                                @PathVariable("page") Integer page,
+                                                @PathVariable("page")   Integer page,
                                                 @RequestParam("offset") Integer offset,
                                                 @RequestParam("sort1")  String sort1,
                                                 @RequestParam("sort2")  String sort2){
+
+        //page 0 and offet 5 means ::: return rows 0-4  ..page starts from zero and offset means limit the records
 
         return this.studentService.findByName(name,page,offset,sort1,sort2);
 

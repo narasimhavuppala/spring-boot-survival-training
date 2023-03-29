@@ -58,7 +58,7 @@ public class StudentService {
      * @param sort1
      * @return
      */
-    public List<Student>  findByName(String name, int page, int offset, String sort1, String sort2){
+    public List<Student>  findByName(String name, Integer page, Integer offset, String sort1, String sort2){
 
 
         Pageable pageable= PageRequest.of(

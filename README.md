@@ -279,7 +279,4 @@
 - Many to Many mapping
 - two data sources in the same project
 - Unit Test cases
-- Spring AOP
-    - Before
-    - After
-    - Around 
+- File upload and download 
