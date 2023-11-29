@@ -7,3 +7,12 @@ server:
 spring:
    h2:
      console.enabled: true
+   security:
+      oauth2:
+         client:
+            registration:
+               github:
+                  clientId: 9670ee0c5ec60eeef8a1
+                  clientSecret: e77aababf43da35af46666bd7be23c1406a268ff
+                  redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+                  grantType: authorization_code

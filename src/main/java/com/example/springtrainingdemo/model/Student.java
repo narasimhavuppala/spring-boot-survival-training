@@ -1,13 +1,13 @@
 package com.example.springtrainingdemo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 
