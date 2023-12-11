@@ -1,0 +1,28 @@
+For the last 2 years I've been working at the backend and immediately helping the Java API Spring Boot, a RESTful web services, 
+micro services development,
+ relational databases and no SQL databases. Working with cloud technologies. 
+ and I'm pretty good with Agile with a two week sprint and 4 weeks  release 
+and at the same time while using the Docker Kubernetes and DevOps tools, and the front end tools such as the Angular and react, 
+so right from design to the deployment involved in each and every phase of the application development.
+
+
+
+
+
+There are couple of instances where I was not able to deliver the user story within the stipulated time period.
+ So one example is our spring security integration with the Oauth 2.0  integration, 
+where I had to do with the like agility token and able to uncover the context for client credentials, password and authorization code. 
+And I took one step extra and then onwards like whatever is in an experience with the newer technologies, 
+I had to learn a friend and ask him that question so that like before taking up the story itself, or like I would be able to petition to handle that. 
+That's why we put a lot and to keeping a complete view on the technologies and the keeping a view on the backlog is helping me a lot.
+
+
+So over the last few years, I have picked up the messaging platforms such as the Kafka, which is the Pub Sub model 
+and are able to work in a distributed environment, 
+and I'm able to work with the Docker containers able to work with the Kubernetes for the deployment of applications,
+ able to set up the CICD  pipelines and the picking up the AWS so these are the things that are very proud of.
+
+
+Treat me as kind of a like a mentor for the junior level people and they call me out like very good knowledge 
+on the design to the department and having a complete focus on the activities and very clear, collaborative team members
+ and participating in all Azure ceremonies and very controlled to the meetings.

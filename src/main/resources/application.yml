@@ -5,14 +5,49 @@ server:
    compression:
       enabled: false
 spring:
+   config:
+     activate:
+       on-profile: redis,postgres
+   kafka:
+     producer:
+       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+     consumer:
+       value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+   jpa:
+     properties:
+       hibernate:
+         dialect: org.hibernate.dialect.PostgreSQLDialect
+     generate-ddl: true
+     hibernate:
+      ddl-auto: create
    h2:
-     console.enabled: true
-   security:
-      oauth2:
-         client:
-            registration:
-               github:
-                  clientId: 9670ee0c5ec60eeef8a1
-                  clientSecret: e77aababf43da35af46666bd7be23c1406a268ff
-                  redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
-                  grantType: authorization_code
+     console:
+       enabled: true
+   servlet:
+     multipart:
+       max-file-size: 5MB
+       max-request-size: 6MB
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics, beans,loggers,prometheus
+spring-doc:
+  show-actuator: true
+---
+spring:
+  config:
+    activate:
+      on-profile: redis
+  redis:
+    host: localhost
+    port: 6379
+---
+spring:
+  config:
+    activate:
+      on-profile: postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sonar
+    username: postgres
+    password: postgres
